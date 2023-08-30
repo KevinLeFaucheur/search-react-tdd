@@ -6,7 +6,7 @@ export const Select = ({ options }) => {
   const [selectedValue, setSelectedValue] = useState('');
 
   const handleShowMenu = () => {
-    setShowMenu(!showMenu);
+    setShowMenu(true);
   }
 
   const handleOptionClick = (option) => {
@@ -18,7 +18,7 @@ export const Select = ({ options }) => {
     <Container>
 
       <Selector onClick={handleShowMenu}>
-        {selectedValue ? selectedValue : 'Click Me'}
+        {showMenu ? <Input /> : selectedValue ? selectedValue : 'Click Me'}
       </Selector>
       {showMenu && options && <Menu>
         {options.map((option, i) => 
@@ -45,9 +45,25 @@ const Selector = styled.div`
   width: 100%;
   background-color: #3282F7;
   color: white;
+  padding-left: 0.5rem;
+  text-align: left;
   border-radius: 5px;
   user-select: none;
   line-height: 35px;
+  box-sizing: border-box;
+`
+
+const Input = styled.input`
+  padding-left: 0.5rem;
+  border: none;
+  background-color: transparent;
+  font-family: 'Signika', sans-serif;
+  font-size: 1rem;
+  color: white;
+
+  &:focus {
+    outline: none;
+  }
 `
 
 const Menu = styled.div`
@@ -63,6 +79,7 @@ const Menu = styled.div`
   z-index: 10;
   border-radius: 5px;
 `
+
 const Option = styled.div`
   height: 25px;
   user-select: none;
