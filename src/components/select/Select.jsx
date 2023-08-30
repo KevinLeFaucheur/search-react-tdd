@@ -25,6 +25,7 @@ export const Select = ({ options }) => {
           <Option 
             key={i}
             onClick={() => handleOptionClick(option)}
+            selected={option === selectedValue}
           >{option}</Option>
         )}
       </Menu>}
@@ -65,6 +66,7 @@ const Menu = styled.div`
 const Option = styled.div`
   height: 25px;
   user-select: none;
+  background-color: ${({ selected }) => selected ? '#ff6c59' : ''};
 
   &:hover{
     background-color: #7dadf5;
