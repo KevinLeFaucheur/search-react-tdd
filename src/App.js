@@ -4,7 +4,10 @@ import { Card } from './components/card/Card';
 import { Search } from './components/searchbar/Search';
 import { Select } from './components/select/Select';
 
-function App() {
+const App = () => {
+  const options = ['Test1', 'Test2', 'Test3', 'Test4'];
+
+
   return (
     <Container className="App">
       <section id="search">
@@ -12,17 +15,20 @@ function App() {
 
         <Search />
 
+        <div id="search__selects"></div>
+
         <SelectContainer>
-          <Select />
-          <Select />
-          <Select />
+          <Select options={options} />
+          <Select options={options} />
+          <Select options={options} />
         </SelectContainer>
 
-        <div id="search__selects"></div>
       </section>
 
       <section>
+
         <h2>Results</h2>
+
         <CardContainer>
           <Card />
           <Card />
@@ -31,7 +37,9 @@ function App() {
           <Card />
           <Card />
         </CardContainer>
+
       </section>
+      
     </Container>
   );
 }
