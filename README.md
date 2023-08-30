@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is about a seach bar and search tag selects made in React, goal is to practice TDD with search functions.
 
 ## Available Scripts
 
