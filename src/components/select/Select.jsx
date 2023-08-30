@@ -3,18 +3,30 @@ import { styled } from 'styled-components';
 
 export const Select = ({ options }) => {
   const [showMenu, setShowMenu] = useState(false);
+  const [selectedValue, setSelectedValue] = useState('');
 
   const handleShowMenu = () => {
     setShowMenu(!showMenu);
   }
 
+  const handleOptionClick = (option) => {
+    setSelectedValue(option);
+    setShowMenu(false);
+  }
+
   return (
     <Container>
+
       <Selector onClick={handleShowMenu}>
-        Click Me
+        {selectedValue ? selectedValue : 'Click Me'}
       </Selector>
       {showMenu && options && <Menu>
-        {options.map((option, i) => <Option key={i}>{option}</Option>)}
+        {options.map((option, i) => 
+          <Option 
+            key={i}
+            onClick={() => handleOptionClick(option)}
+          >{option}</Option>
+        )}
       </Menu>}
 
     </Container>
