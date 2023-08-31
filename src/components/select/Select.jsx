@@ -1,9 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { styled } from 'styled-components';
 
 export const Select = ({ options }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [selectedValue, setSelectedValue] = useState('');
+  const inputRef = useRef();
+
+  useEffect(() => {
+    const handler = (e) => { 
+      if(inputRef.current && !inputRef.current.contains(e.target)) {
+        setShowMenu(false); 
+      }
+    }
+
+    window.addEventListener('click', handler);
+    return () => { window.removeEventListener('click', handler) }
+  }, [showMenu])
 
   const handleShowMenu = () => {
     setShowMenu(true);
@@ -15,7 +27,7 @@ export const Select = ({ options }) => {
   }
 
   return (
-    <Container>
+    <Container ref={inputRef}>
 
       <Selector onClick={handleShowMenu}>
         {showMenu ? <Input /> : selectedValue ? selectedValue : 'Click Me'}
