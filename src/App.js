@@ -3,6 +3,7 @@ import './App.css';
 import { Card } from './components/card/Card';
 import { Search } from './components/searchbar/Search';
 import { Select } from './components/select/Select';
+import { Tag } from './components/tag/Tag';
 
 const App = () => {
   const options = ['Test1', 'Test2', 'Test3', 'Test4'];
@@ -15,7 +16,12 @@ const App = () => {
 
         <Search />
 
-        <div id="search__selects"></div>
+        <TagContainer>
+          <Tag tag='Test' />
+          <Tag tag='Test' />
+          <Tag tag='Test' />
+          <Tag tag='Test' />
+        </TagContainer>
 
         <SelectContainer>
           <Select options={options} />
@@ -39,7 +45,7 @@ const App = () => {
         </CardContainer>
 
       </section>
-      
+
     </Container>
   );
 }
@@ -47,6 +53,11 @@ const App = () => {
 const Container = styled.div`
   width: 90%;
   margin: 0 auto;
+`
+
+const TagContainer = styled.div`
+  display: flex;
+  margin-bottom: 0.5rem;
 `
 
 const SelectContainer = styled.div`
