@@ -4,6 +4,7 @@ import { Card } from './components/card/Card';
 import { Search } from './components/searchbar/Search';
 import { Select } from './components/select/Select';
 import { Tag } from './components/tag/Tag';
+import { movies } from './data/movies';
 
 const App = () => {
   const options = ['Test1', 'Test2', 'Test3', 'Test4'];
@@ -36,12 +37,9 @@ const App = () => {
         <h2>Results</h2>
 
         <CardContainer>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {movies.map(movie => 
+            <Card key={movie.id} movie={movie} />
+          )}
         </CardContainer>
 
       </section>

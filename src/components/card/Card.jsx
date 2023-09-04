@@ -1,14 +1,19 @@
 import React from 'react'
 import { styled } from 'styled-components'
 
-export const Card = () => {
+export const Card = ({ movie }) => {
   return (
     <Container>
       <Head>
 
       </Head>
       <Body>
-        Card
+        <div>{movie.title}</div>
+        <div>{movie.genre}</div>
+        <div>{movie.time}</div>
+        <div>{movie.city}</div>
+        <div>{movie.director}</div>
+        <div>{movie.language}</div>
       </Body>
     </Container>
   )
