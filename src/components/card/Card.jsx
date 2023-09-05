@@ -8,17 +8,39 @@ export const Card = ({ movie }) => {
 
       </Head>
       <Body>
-        <Title>{movie.title}</Title>
+
         <CardHeader>
-          <Director>{movie.director}</Director>
-          <Genre>{movie.genre}</Genre>
+          <Title>{movie.title.toUpperCase()}</Title>  
+          <Label>DIRECTED BY</Label>
+          <Value>{movie.director}</Value>
         </CardHeader>
-        <section>
-          <City>{movie.city}</City>
-          <Time>{movie.time}</Time>
-          <Language>{movie.language}</Language>
-          <Price>{movie.price}</Price>
-        </section>
+
+        <CardBody>
+          <Row>
+            <Label>GENRE:&nbsp;</Label><Value>{movie.genre}</Value>
+          </Row>
+          <Row>
+            <Label>LANGUAGE:&nbsp;</Label><Value>{movie.language}</Value>
+          </Row>
+        </CardBody>
+
+        <Separator />
+
+        <CardFooter>
+          <Block>
+            <Label>CITY</Label>
+            <Value>{movie.city}</Value>
+          </Block>
+          <Block>
+            <Label>TIME</Label>
+            <Value>{movie.time}</Value>
+          </Block>
+          <Block>
+            <Label>PRICE</Label>
+            <Value>{movie.price}</Value>
+          </Block>
+        </CardFooter>
+
       </Body>
     </Container>
   )
@@ -27,50 +49,66 @@ export const Card = ({ movie }) => {
 const Container = styled.div`
   width: 30%;
   height: 400px;
-  background-color: #E7E7E7;
+  background-color: #FFFBD8;
   border-radius: 15px;
   margin-bottom: 1rem;
 `
 
 const Head = styled.header`
-  height: 65%;
+  height: 52%;
   background-color: #929292;
   border-radius: 15px 15px 0 0;
 `
 
 const Body = styled.div`
-  padding: 10px;
+  padding: 20px;
 `
 
 const CardHeader = styled.div`
+  margin-bottom: 0.5rem;
+`
+
+const CardBody = styled.div`
+  margin-bottom: 0.5rem;
+`
+
+const Block = styled.div`
+
+`
+
+const Row = styled.div`
+  display: flex;
+`
+
+const CardFooter = styled.div`
   display: flex;
   justify-content: space-between;
 `
 
-const Title = styled.div`
+const Label = styled.label`
+  width: 20%;
+  font-size: 0.65rem;
+  line-height: 1rem;
+  color: #85847a;
+  text-align: start;
+`
+
+const Title = styled.h2`
+  font-size: 1.2rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+  margin: 0 0 0.5rem 0;
+`
+
+const Value = styled.div`
+  line-height: 1rem;
 
 `
 
-const Director = styled.div`
-
-`
-
-const Genre = styled.div`
-
-`
-
-const City = styled.div`
-
-`
-
-const Time = styled.div`
-
-`
-
-const Price = styled.div`
-
-`
-
-const Language = styled.div`
-
+const Separator = styled.div`
+  height: 1px;
+  background-color: black;
+  margin: 0.25rem 0;
 `
