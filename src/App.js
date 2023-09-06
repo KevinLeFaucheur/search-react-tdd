@@ -1,15 +1,17 @@
+import { useState } from 'react';
 import { styled } from 'styled-components';
-import './App.css';
 import { Card } from './components/card/Card';
 import { Search } from './components/searchbar/Search';
 import { Select } from './components/select/Select';
 import { Tag } from './components/tag/Tag';
+import { TagContext } from './components/TagContext'
 import { movies } from './data/movies';
+import './App.css';
 
 const App = () => {
+  const [tags, setTags] = useState(['red', 'blue', 'green']);
   const options = ['Test1', 'Test2', 'Test3', 'Test4', 
     'Test5', 'Test6', 'Test7', 'Test8', 'Test9', 'Test10'];
-
 
   return (
     <Container className="App">
@@ -18,18 +20,17 @@ const App = () => {
 
         <Search />
 
-        <TagContainer>
-          <Tag tag='Test' />
-          <Tag tag='Test' />
-          <Tag tag='Test' />
-          <Tag tag='Test' />
-        </TagContainer>
+        <TagContext.Provider value={{tags, setTags}}>
+          <TagContainer>
+            {tags.map(tag => <Tag tag={tag} />)}
+          </TagContainer>
 
-        <SelectContainer>
-          <Select name='Titles' options={options} />
-          <Select name='Genre' color={'#ED6454'} options={options} />
-          <Select name='Directors' color={'#68D9A4'} options={options} />
-        </SelectContainer>
+          <SelectContainer>
+            <Select name='Titles' options={options} />
+            <Select name='Genre' color={'#ED6454'} options={options} />
+            <Select name='Directors' color={'#68D9A4'} options={options} />
+          </SelectContainer>
+        </TagContext.Provider>
 
       </section>
 

@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { styled } from 'styled-components'
+import { TagContext } from '../TagContext';
 
 export const Tag = ({ tag }) => {
+  const { tags, setTags } = useContext(TagContext);
+
+  const handleOnClick = () => {
+    let newTags = tags.filter(t => t !== tag);
+    setTags(newTags);
+  }
+
   return (
     <Container>
       {tag}
-      <Close>x</Close>
+      <Close onClick={handleOnClick}>x</Close>
     </Container>
   )
 }
