@@ -80,20 +80,42 @@ const Input = styled.input`
 
 const Menu = styled.div`
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   box-sizing: border-box;
+  overflow-x: scroll;
   margin-top: 1px;
   left: 0;
   height: fit-content;
+  max-height: 150px;
   width: 100%;
   padding: 10px;
   background-color: ${({ color }) => color ? color : '#3282F7' };
   color: white;
   z-index: 10;
   border-radius: 5px;
+  
+  &::-webkit-scrollbar {
+    height: 10px;
+  }
+ 
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: ${({ color }) => color ? color : '#3282F7' };
+    outline: 1px solid ${({ color }) => color ? color : '#3282F7' };
+    box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+  }
 `
 
 const Option = styled.div`
   height: 25px;
+  width: 150px;
+  text-align: start;
   user-select: none;
   background-color: ${({ selected }) => selected ? '#ff6c59' : ''};
 

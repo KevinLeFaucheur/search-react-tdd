@@ -7,7 +7,8 @@ import { Tag } from './components/tag/Tag';
 import { movies } from './data/movies';
 
 const App = () => {
-  const options = ['Test1', 'Test2', 'Test3', 'Test4'];
+  const options = ['Test1', 'Test2', 'Test3', 'Test4', 
+    'Test5', 'Test6', 'Test7', 'Test8', 'Test9', 'Test10'];
 
 
   return (
