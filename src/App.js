@@ -25,9 +25,9 @@ const App = () => {
         </TagContainer>
 
         <SelectContainer>
-          <Select options={options} />
-          <Select options={options} />
-          <Select options={options} />
+          <Select name='Titles' options={options} />
+          <Select name='Genre' color={'#ED6454'} options={options} />
+          <Select name='Directors' color={'#68D9A4'} options={options} />
         </SelectContainer>
 
       </section>

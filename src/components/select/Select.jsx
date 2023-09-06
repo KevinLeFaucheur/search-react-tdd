@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { styled } from 'styled-components';
 
-export const Select = ({ options }) => {
+export const Select = ({ name, color, options }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [selectedValue, setSelectedValue] = useState('');
   const inputRef = useRef();
@@ -29,10 +29,10 @@ export const Select = ({ options }) => {
   return (
     <Container ref={inputRef}>
 
-      <Selector onClick={handleShowMenu}>
-        {showMenu ? <Input /> : selectedValue ? selectedValue : 'Click Me'}
+      <Selector onClick={handleShowMenu} color={color}>
+        {showMenu ? <Input /> : name ? name : selectedValue }
       </Selector>
-      {showMenu && options && <Menu>
+      {showMenu && options && <Menu color={color}>
         {options.map((option, i) => 
           <Option 
             key={i}
@@ -55,7 +55,7 @@ const Container = styled.div`
 const Selector = styled.div`
   height: 100%;
   width: 100%;
-  background-color: #3282F7;
+  background-color: ${({ color }) => color ? color : '#3282F7' };
   color: white;
   padding-left: 0.5rem;
   text-align: left;
@@ -86,7 +86,7 @@ const Menu = styled.div`
   height: fit-content;
   width: 100%;
   padding: 10px;
-  background-color: #3282F7;
+  background-color: ${({ color }) => color ? color : '#3282F7' };
   color: white;
   z-index: 10;
   border-radius: 5px;
