@@ -1,7 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { styled } from 'styled-components';
+import { TagContext } from '../TagContext';
 
 export const Select = ({ name, color, options }) => {
+  const { tags, setTags } = useContext(TagContext);
   const [showMenu, setShowMenu] = useState(false);
   const [selectedValue, setSelectedValue] = useState('');
   const inputRef = useRef();
@@ -24,6 +26,7 @@ export const Select = ({ name, color, options }) => {
   const handleOptionClick = (option) => {
     setSelectedValue(option);
     setShowMenu(false);
+    setTags([...tags, option]);
   }
 
   return (
@@ -37,7 +40,7 @@ export const Select = ({ name, color, options }) => {
           <Option 
             key={i}
             onClick={() => handleOptionClick(option)}
-            selected={option === selectedValue}
+            // selected={option === selectedValue}
           >{option}</Option>
         )}
       </Menu>}
@@ -117,7 +120,7 @@ const Option = styled.div`
   width: 150px;
   text-align: start;
   user-select: none;
-  background-color: ${({ selected }) => selected ? '#ff6c59' : ''};
+  /* background-color: ${({ selected }) => selected ? '#ff6c59' : ''}; */
 
   &:hover{
     background-color: #7dadf5;

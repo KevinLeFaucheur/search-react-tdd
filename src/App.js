@@ -22,7 +22,7 @@ const App = () => {
 
         <TagContext.Provider value={{tags, setTags}}>
           <TagContainer>
-            {tags.map(tag => <Tag tag={tag} />)}
+            {tags && tags.map((tag, i) => <Tag key={i} tag={tag} />)}
           </TagContainer>
 
           <SelectContainer>
